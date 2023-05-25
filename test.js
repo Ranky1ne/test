@@ -17,7 +17,7 @@ class UserService {
  authenticate_user() {
     return new Promise ((resolve,reject)=>{
       const xhr = new XMLHttpRequest();
-    xhr.open('POST', `/auth', true);
+    xhr.open('POST', '/auth', true);
     xhr.responseType = 'json';
     xhr.onload = function (){
         if (this.readyState == 4 && this.status == 200) {
