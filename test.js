@@ -17,7 +17,7 @@ class UserService {
  authenticate_user() {
     return new Promise ((resolve,reject)=>{
       const xhr = new XMLHttpRequest();
-    xhr.open('GET', `http://examples.com/authenticate?username=${this.username}&password=${this.password}', true);
+    xhr.open('POST', `/auth', true);
     xhr.responseType = 'json';
     xhr.onload = function (){
         if (this.readyState == 4 && this.status == 200) {
@@ -25,7 +25,8 @@ class UserService {
         } else {
           reject(this.response);
         }
-    }
+    };
+    xhr.send(`{'username': ${this.username}, 'password': ${this.password}}`)
     })   
   }
 }
